@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap");
 
+
 :root {
   --bg-color: #000000;
   --menu-color: #4c4d5b;
@@ -26,6 +27,45 @@ body {
   width: 100%;
   height: 100%;
 }
+
+/* Header styling */
+
+header {
+  background-color: #4371bf;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  color: white;
+  margin: 0;
+  font-size: 2rem;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin: 0 1rem;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Main Styling */
 
 main {
   height: 100%;
@@ -175,4 +215,22 @@ main {
   0% {
     opacity: 0;
   }
+}
+
+/* Footer Styling */
+
+.footer {
+  background-color: #000000;
+  padding: 2rem;
+  text-align: center;
+}
+
+.social-media-links i {
+  color: #f4f4f4;
+  margin: 1rem;
+  text-decoration: none;
+}
+
+.social-media-links a {
+  text-decoration: none; /* Ensure no underline */
 }
