@@ -1,6 +1,7 @@
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap");
 
-
+/* Define CSS variables for theme colors */
 :root {
   --bg-color: #000000;
   --menu-color: #4c4d5b;
@@ -16,12 +17,14 @@
   --bg-gradient: linear-gradient(0deg, #000000 0%,#000064 50%, #4371bf 100%);
 }
 
+/* Apply box-sizing and margin reset to all elements */
 * {
   box-sizing: border-box;
   margin: 0;
   font-family: "Ubuntu Sans Mono", monospace;
 }
 
+/* Set width and height to 100% for html and body */
 html,
 body {
   width: 100%;
@@ -29,7 +32,6 @@ body {
 }
 
 /* Header styling */
-
 header {
   background-color: #4371bf;
   padding: 1rem;
@@ -65,8 +67,7 @@ header nav ul li a:hover {
   text-decoration: underline;
 }
 
-/* Main Styling */
-
+/* Main content styling */
 main {
   height: 72%;
   width: 100%;
@@ -81,6 +82,7 @@ main {
   padding-top: 5rem;
 }
 
+/* Menu styling */
 .menu {
   display: flex;
   gap: 0.5rem;
@@ -127,6 +129,7 @@ main {
   font-weight: bold;
 }
 
+/* Restart button styling */
 #restart-btn {
   font-size: 1.75rem;
   border: none;
@@ -144,6 +147,7 @@ main {
   color: var(--accent-color);
 }
 
+/* Words wrapper styling */
 .words-wrapper {
   position: relative;
   max-width: 75%;
@@ -152,6 +156,7 @@ main {
   overflow: hidden;
 }
 
+/* Words container styling */
 .words-container {
   gap: 12px;
   display: flex;
@@ -166,6 +171,7 @@ main {
 
 }
 
+/* Word styling */
 .word {
   user-select: none;
   color: var(--word-color);
@@ -184,6 +190,7 @@ main {
   opacity: 0.6;
 }
 
+/* Timer styling */
 .timer {
   color: var(--menu-font-color);
   font-weight: 600;
@@ -193,6 +200,7 @@ main {
   text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 
+/* Result styling */
 .result {
   height: 2rem;
   color: var(--accent-color);
@@ -200,6 +208,7 @@ main {
   
 }
 
+/* Caret styling */
 #caret {
   position: absolute;
   background-color: var(--caret-color);
@@ -218,8 +227,7 @@ main {
   }
 }
 
-/* Footer Styling */
-
+/* Footer styling */
 .footer {
   background-color: #000000;
   color: #ffffff;
@@ -227,6 +235,7 @@ main {
   text-align: center;
 }
 
+/* Social media links styling */
 .social-media-links i {
   color: #f4f4f4;
   margin: 1rem;

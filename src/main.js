@@ -1,6 +1,8 @@
+// Import necessary modules and constants
 import { ENGLISH } from "./words.js";
 import "./menu.js";
 
+// Select DOM elements
 const wordsContainer = document.querySelector(".words-container");
 const timerEl = document.querySelector(".timer");
 const resultEl = document.querySelector(".result");
@@ -9,12 +11,13 @@ const caretEl = document.getElementById("caret");
 
 let wordsElArr = wordsContainer.querySelectorAll("div.word");
 
-// 0 = time, 1 = word
-let typingMode = 0;
+// Typing mode and configuration variables
+let typingMode = 0; // 0 = time, 1 = word
 let maxWords = 25;
 let maxTime = 60; // seconds
 let language = "english";
 
+// User state object to track typing progress
 const userState = {
   typedWords: [],
   totalKeystrokes: 0,
@@ -31,23 +34,27 @@ let interval = null;
 let currentWord = "";
 let wordsArr = [];
 
+// Function to switch typing mode
 export function switchTypingMode(type) {
   typingMode = type;
   setupTypingTest();
 }
 
+// Function to switch mode options
 export function switchModeOptions(mode, option) {
   if (mode === 0) maxTime = option;
   if (mode === 1) maxWords = option;
   setupTypingTest();
 }
 
+// Event listeners for keydown and restart button
 document.addEventListener("keydown", handleKeys);
 restartBtn.addEventListener("click", () => {
   restartBtn.blur();
   setupTypingTest();
 });
 
+// Handle window resize event
 let _resizeTimeout = 0;
 window.addEventListener("resize", () => {
   clearTimeout(_resizeTimeout);
@@ -60,7 +67,7 @@ function _onResizeEnd() {
   }
 }
 
-// this is called after the words container scrolls
+// Handle words container transition end event
 wordsContainer.addEventListener("transitionend", () => {
   wordsContainer.style.transition = "all 0s";
   wordsContainer.style.marginTop = "0px";
@@ -78,8 +85,10 @@ wordsContainer.addEventListener("transitionend", () => {
   updateCaret(getLetterEl(getWordEl()), false);
 });
 
+// Initialize typing test
 setupTypingTest();
 
+// Function to set up the typing test
 function setupTypingTest() {
   clearInterval(interval);
   wordsContainer.innerHTML = "";
@@ -109,6 +118,7 @@ function setupTypingTest() {
   caretEl.classList.add("blink");
 }
 
+// Function to start the typing test
 function startTypingTest() {
   caretEl.classList.remove("blink");
   started = true;
@@ -117,6 +127,7 @@ function startTypingTest() {
   interval = setInterval(testTick, 500);
 }
 
+// Function to handle each tick of the test timer
 function testTick() {
   const secondsPassed = Math.floor((performance.now() - userState.time) / 1000);
   if (typingMode === 1) updateTimer(secondsPassed);
@@ -127,6 +138,7 @@ function testTick() {
   }
 }
 
+// Function to end the typing test
 function endTest() {
   userState.typedWords.push({
     word: userState.wordBuffer,
@@ -138,6 +150,7 @@ function endTest() {
   calculateResult();
 }
 
+// Function to calculate and display the test result
 function calculateResult() {
   const time = (performance.now() - userState.time) / 1000 / 60;
   const { totalKeystrokes, typedWords } = userState;
@@ -157,6 +170,7 @@ function calculateResult() {
   resultEl.textContent = `${result.toFixed(2)}wpm`;
 }
 
+// Function to update the timer display
 function updateTimer(sec) {
   const minutes = Math.floor(sec / 60)
     .toString()
@@ -165,16 +179,19 @@ function updateTimer(sec) {
   timerEl.textContent = `${minutes}:${seconds}`;
 }
 
+// Function to get a random word from the word list
 function getRandomWord(lang = language) {
   const rnd = Math.floor(Math.random() * 100);
   return ENGLISH[rnd];
 }
 
+// Function to add a new word to the words container
 function addNewWord(word) {
   wordsArr.push(word);
   wordsContainer.appendChild(createWordEl(word));
 }
 
+// Function to set up the words for the typing test
 function setupWords(wordsAmount = maxWords) {
   for (let i = 0; i < wordsAmount; i++) {
     const randomWord = getRandomWord();
@@ -182,6 +199,7 @@ function setupWords(wordsAmount = maxWords) {
   }
 }
 
+// Function to create a word element
 function createWordEl(word) {
   const wordDiv = document.createElement("div");
   wordDiv.classList = "word";
@@ -191,6 +209,7 @@ function createWordEl(word) {
   return wordDiv;
 }
 
+// Function to create a letter element
 function createLetterEl(letter, classList = null) {
   const letterEl = document.createElement("span");
   letterEl.textContent = letter;
@@ -198,14 +217,17 @@ function createLetterEl(letter, classList = null) {
   return letterEl;
 }
 
+// Function to get the letter element at a specific index
 function getLetterEl(currentWordEl, index = userState.currentLetterIndex) {
   return currentWordEl.querySelectorAll("span").item(index);
 }
 
+// Function to get the word element at a specific index
 function getWordEl(index = userState.currentWordIndex) {
   return wordsContainer.querySelectorAll("div.word").item(index);
 }
 
+// Function to get the height offset of a word
 function getWordHeightOffset() {
   const gap = 12;
   const wordHeight = wordsContainer
@@ -214,6 +236,7 @@ function getWordHeightOffset() {
   return wordHeight + gap;
 }
 
+// Function to update the caret position
 function updateCaret(letterEl, addWidth = true) {
   const letterPosition = letterEl.getBoundingClientRect();
   const offset = wordsContainer.getBoundingClientRect();
@@ -226,6 +249,7 @@ function updateCaret(letterEl, addWidth = true) {
   caretEl.style.top = `${y}px`;
 }
 
+// Function to check if more words can be created
 function canCreateMoreWords() {
   const { currentWordIndex } = userState;
 
@@ -241,6 +265,7 @@ function canCreateMoreWords() {
   return wordDim.y > containerDim.y && wordDim.y < nextWordDim.y;
 }
 
+// Function to get the number of lines to scroll
 function getLinesToScroll() {
   const { currentWordIndex } = userState;
 
@@ -255,6 +280,7 @@ function getLinesToScroll() {
   return (wordDim.y - offset) / wordHeightOffset;
 }
 
+// Function to get the amount of words to delete
 function getAmountToDelete() {
   const words = wordsContainer.querySelectorAll("div.word");
   const positionY = words.item(0).getBoundingClientRect().y;
@@ -266,11 +292,13 @@ function getAmountToDelete() {
   return amount;
 }
 
+// Function to delete the previous line of words
 function deletePreviousLine(amount = 1) {
   wordsContainer.style.transition = "all 250ms ease";
   wordsContainer.style.marginTop = `-${getWordHeightOffset() * amount}px`;
 }
 
+// Function to go to the previous word
 function goToPreviousWord() {
   userState.currentWordIndex--;
   currentWord = wordsArr[userState.currentWordIndex];
@@ -278,6 +306,7 @@ function goToPreviousWord() {
   userState.currentLetterIndex = userState.wordBuffer.length;
 }
 
+// Function to delete the whole word
 function deleteWholeWord() {
   const currentWordEl = getWordEl();
   userState.wordBuffer = "";
@@ -293,6 +322,7 @@ function deleteWholeWord() {
   });
 }
 
+// Function to handle backspace key press
 function handleBackspace(ctrlKey) {
   let currentWordEl = getWordEl();
   let currentLetterEl = getLetterEl(currentWordEl);
@@ -340,6 +370,7 @@ function handleBackspace(ctrlKey) {
   }
 }
 
+// Function to handle spacebar key press
 function handleSpacebar() {
   if (userState.wordBuffer === "") return;
 
@@ -367,6 +398,7 @@ function handleSpacebar() {
   currentWord = wordsArr[userState.currentWordIndex];
 }
 
+// Function to handle keydown events
 function handleKeys(event) {
   const { key, ctrlKey } = event;
 
