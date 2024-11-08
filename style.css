@@ -246,6 +246,10 @@ main {
   text-decoration: none; /* Ensure no underline */
 }
 
+.about, .contact{
+  color: #fff;
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   header {
