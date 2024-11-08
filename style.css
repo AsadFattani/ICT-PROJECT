@@ -69,7 +69,7 @@ header nav ul li a:hover {
 
 /* Main content styling */
 main {
-  height: 72%;
+  height: 90%;
   width: 100%;
   flex: 1;
   display: flex;
@@ -244,4 +244,95 @@ main {
 
 .social-media-links a {
   text-decoration: none; /* Ensure no underline */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px;
+  }
+
+  header nav ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  header nav ul li {
+    margin: 0;
+  }
+
+  main {
+    padding-top: 2rem;
+  }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .menu .spacer {
+    display: none;
+  }
+
+  .timer {
+    font-size: 4rem;
+  }
+
+  .result {
+    font-size: 1.5rem;
+  }
+
+  .words-wrapper {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .words-container {
+    font-size: 1.2rem;
+  }
+
+  .footer {
+      padding: 1rem;
+    }
+
+  .social-media-links i {
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  header nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  header nav ul li a {
+    font-size: 1rem;
+  }
+
+  .timer {
+    font-size: 3rem;
+  }
+
+  .result {
+    font-size: 1.2rem;
+  }
+
+  .words-container {
+    font-size: 1rem;
+  }
 }
