@@ -28,7 +28,7 @@
 html,
 body {
   width: 100%;
-  height: 100%;
+  height: 110%;
 }
 
 /* Header styling */
@@ -339,4 +339,97 @@ main {
   .words-container {
     font-size: 1rem;
   }
+}
+
+/* ABout styling */
+
+.about-content {
+  color: #fff;
+  font-size: 1.2rem;
+  width: 80%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  margin: 1rem auto;
+  background: linear-gradient(145deg, #333, #444);
+  border: 1px solid #555;
+  text-align: center;
+  background-color: #252525;
+}
+
+/* contact styling */
+
+.info {
+  color: #fff;
+  font-size: 1.1rem;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  margin: 2rem auauto;
+  background: linear-gradient(145deg, #333, #444);
+  border: 1px solid #555;
+  text-align: left;
+  background-color: #252525;
+}
+
+.formi {
+  color: #fff;
+  font-size: 1.1rem;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  margin: 2rem auauto;
+  background: linear-gradient(145deg, #333, #444);
+  border: 1px solid #555;
+  text-align: left;
+  background-color: #252525;
+}
+
+.formi input[type="text"],
+.formi input[type="email"],
+.formi textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+}
+
+.formi input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formi input[type="submit"]:hover {
+  background-color: #45a049;
+}
+.formi button {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.formi button:hover {
+  background-color: #45a049;
 }

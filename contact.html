@@ -19,22 +19,31 @@
         </nav>
     </header>
     <main class="contact">
-      <h1>Contact Us</h1>
-      <br>
-      <h3><strong>Email</strong></h3>
-      <p>asad.imran.fattani@gmail.com<br>
-        omershahid78@gmail.com<br>
-        aliburair87@gmail.com</p>
-      <h3><strong>Contact</strong></h3>
-      <p>+92 306 2388392<br>
-      +92 330 2190600<br>
-      +92 317 8256388</p>
-      
-      
+      <div class="info">
+        <h1>Contact Us</h1>
+        <br>
+        <h3>Email</h3><br>
+        <p>asad.imran.fattani@gmail.com<br>omershahid78@gmail.com<br>aliburair87@gmail.com</p>
+          <br><h3>Contact</h3><br>
+          <p>+92 306 2388392<br>+92 330 2190600<br>+92 317 8256388</p>
+      </div>
+      <div class="formi">
+        <form class="contact-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+          
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+          
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+          
+          <button type="submit">Send</button>
+        </form>
+      </div>
     </main>
-    <footer>
-        <footer class="footer">
-            <div class="social-media-links">
+    <footer class="footer">
+        <div class="social-media-links">
             <a href="https://www.facebook.com" target="_blank" aria-label="Facebook">
               <i class="fab fa-facebook fa-2x"></i>
             </a>
@@ -44,9 +53,8 @@
             <a href="https://www.instagram.com" target="_blank" aria-label="Instagram">
               <i class="fab fa-instagram fa-2x"></i>
             </a>
-            </div>
-            <p>&copy; 2020 Speedy Paws, All Rights Reserved</p>
-          </footer>
+        </div>
+        <p>&copy; 2020 Speedy Paws, All Rights Reserved</p>
     </footer>
 </body>
 </html>
