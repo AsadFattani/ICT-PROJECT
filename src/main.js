@@ -54,6 +54,14 @@ restartBtn.addEventListener("click", () => {
   setupTypingTest();
 });
 
+document.addEventListener("keydown", (event) => {
+  if (event.key === " ") {
+    event.preventDefault();
+    handleSpacebar();
+  }
+});
+
+
 // Handle window resize event
 let _resizeTimeout = 0;
 window.addEventListener("resize", () => {
